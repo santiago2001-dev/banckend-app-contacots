@@ -75,6 +75,11 @@ res.json('infromacion secreta')
 }
 
 
+const RestorePassword = async(req,res)=>{
+    
+
+}
+
 module.exports = {
   
     auth,

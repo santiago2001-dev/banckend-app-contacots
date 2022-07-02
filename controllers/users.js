@@ -4,8 +4,8 @@ const {encript} = require('../middelwares/ecriptPass')
 const {hostImg} = require ('../middelwares/hostingImg');
 
 const nodemailer = require('nodemailer');
-const {transporter} = require('../middelwares/configNodemiler');
-const { info } = require('../middelwares/sendEmail');
+const {transporter} = require('../middelwares/email/configNodemiler');
+const { info } = require('../middelwares/email/sendEmail');
 const getUsers = async(req,res)=>{
   
   
