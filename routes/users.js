@@ -11,14 +11,15 @@ getUsers,
 getUsersByid,
 insertUsers,
 updateuser,
-deleteUser
+deleteUser,
+search
 } = require('../controllers/users')
 
 const router = Router();
 
 router.get('/' ,getUsers);
 router.get('/:id',getUsersByid);
-
+router.post('/search',search)
 
 router.post('/register',
 check('email','debe proporcionarse un email valido').isEmail(), 

@@ -80,16 +80,11 @@ res.json('infromacion secreta')
 const RestorePassword = async(req,res)=>{
     link = 'https://www.google.com/'
     const  email = req.body.email;
-    sendEmail(email,'información de tu cuenta de contactos  ITA','REESTABLECIMIENTO DE CONTRASEÑA','Hemos recibido tú solicitud para reestablecer tu contraseña por favor ingresa a este vinculo para poder reestablecerla ',link)
+    sendEmail(email,'información de tu cuenta de contactos  ITA','RESTABLECIMIENTO DE CONTRASEÑA','Hemos recibido tú solicitud para reestablecer tu contraseña por favor ingresa a este vinculo para poder reestablecerla ',link)
     res.json('correo enviado')
          
     }
-    // if(existeEmailRestPas(email) == true){
-    //      sendEmail(email,'hola desde metodo02','prueba01','pene')
-    // }
-    // else{
-    //     return 'error'
-    // }
+ 
 
     
    

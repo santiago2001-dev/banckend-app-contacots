@@ -8,6 +8,7 @@ class Server{
         this.port = process.env.PORT || 3000;
         this.loginPath = '/api/login';
         this.usersPath = '/api/users';
+        this.contactosPath = '/api/contactos';
         //ruta de nuesta apirest
         
 
@@ -31,6 +32,7 @@ class Server{
     routes(){
         this.app.use(this.loginPath,require('../routes/login'));
         this.app.use(this.usersPath,require('../routes/users'));
+        this.app.use(this.usersPath,require('../routes/contactos'));
     }
 
     listen(){

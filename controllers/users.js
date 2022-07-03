@@ -39,6 +39,24 @@ const getUsersByid = async (req,res)=>{
 
 
 
+//nav bar
+const search = async(req,res) =>{
+    const {busqueda} = req.body
+    
+    const sql = `SELECT * FROM users WHERE  email = '${busqueda}' OR name  = '${busqueda}' OR lastname = '${busqueda}'OR role = '${busqueda}}' `
+ 
+    await conec.query(sql, (error,rows,fields) => {
+  
+        if(error){
+            throw error;
+           
+       }else{
+           res.json(rows);
+           
+       }
+    }
+    )}
+
 const insertUsers = async(req,res)=>{
     const {name,lastname,password,email,role,img} = await req.body;
     const imgHosting = await hostImg(img); 
@@ -100,5 +118,6 @@ module.exports = {
     getUsersByid,
     insertUsers,
     updateuser,
-    deleteUser
+    deleteUser,
+    search
 }
