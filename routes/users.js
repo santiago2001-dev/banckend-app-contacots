@@ -5,7 +5,7 @@ const {check} = require('express-validator');
 //modulos propios
 const {validarCmapos} = require('../middelwares/validaciones-campos')
 const {existeEmail} = require('../middelwares/validaremailDB')
-const {sendEmail}= require ('../middelwares/sendEmail.js')
+
 const {
 getUsers,
 getUsersByid,
@@ -38,4 +38,4 @@ updateuser);
 
 router.delete('/delete/:id',deleteUser);
 
-module.exports = router;
+module.exports = router;  

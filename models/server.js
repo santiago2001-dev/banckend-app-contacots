@@ -34,14 +34,14 @@ class Server{
     }
 
     listen(){
-        this.app.listen(this.port,()=>{
+         this.app.listen(this.port,()=>{
             console.log(`servidor corriendo en :http://localhost:${this.port}/api`)
 
         })
 
     }
-
-}
+ 
+} 
 
 
 module.exports = Server;

@@ -3,14 +3,8 @@ const conec = require('../db/config');
 const {encript} = require('../middelwares/ecriptPass')
 const {hostImg} = require ('../middelwares/hostingImg');
 
-const nodemailer = require('nodemailer');
-const {transporter} = require('../middelwares/email/configNodemiler');
-const { info } = require('../middelwares/email/sendEmail');
 const getUsers = async(req,res)=>{
-  
-  
-    info
-   const sql = 'SELECT * FROM users';
+ const sql = 'SELECT * FROM users';
     conec.query(sql,(error,results)=>{
         if(error){
             throw  error;
@@ -50,13 +44,13 @@ const insertUsers = async(req,res)=>{
     const imgHosting = await hostImg(img); 
     const hash =  await encript(password)
     const sql = `INSERT INTO users (name,lastname,email,password,role,img) values ('${name}', '${lastname}','${email}','${hash}','${role}','${imgHosting}')`
-    await conec.query(sql,(error,results)=>{
+     conec.query(sql,(error,results)=>{
         if(error){
-            throw error;
+            throw error; 
 
         }else{
 
-            res.json(results);
+            res.json('susuario agregar de forma correcta');
             
           
 
