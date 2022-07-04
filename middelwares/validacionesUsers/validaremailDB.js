@@ -1,5 +1,5 @@
-const db = require('../db/config');
-const {request,response} =  require('express')
+const db = require('../../db/config');
+
 
 const existeEmail = async(req,res,next)=>{
     const email =  await req.body.email;

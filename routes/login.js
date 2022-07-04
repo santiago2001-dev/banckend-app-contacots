@@ -4,8 +4,8 @@ const {check} = require('express-validator');
 
 //metodos propios
 const {auth,test,RestorePassword} =  require('../controllers/login')
-const {validarCmapos} =  require ('../middelwares/validaciones-campos');
-const {existeEmaiTrue} = require('../middelwares/validaremailDB')
+const {validarCmapos} =  require ('../middelwares/validacionesUsers/validaciones-campos');
+const {existeEmaiTrue} = require('../middelwares/validacionesUsers/validaremailDB')
 
 const router = Router();
 

@@ -3,8 +3,8 @@ const {Router} = require('express');
 const {check} = require('express-validator');
 
 //modulos propios
-const {validarCmapos} = require('../middelwares/validaciones-campos')
-const {existeEmail} = require('../middelwares/validaremailDB')
+const {validarCmapos} = require('../middelwares/validacionesUsers/validaciones-campos')
+const {existeEmail} = require('../middelwares/validacionesUsers/validaremailDB')
 
 const {
 getUsers,

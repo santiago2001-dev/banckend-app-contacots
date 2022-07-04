@@ -28,10 +28,10 @@ const getBydid = async(req,res)=>{
     })
 }
 
-
+  
 const getBynameUser = async(req,res)=>{
-    const {user} = req.params;
-    const sql = `SELECT * FROM contactos WHERE id = ${user}`;
+    const {nameuser} = req.params;
+    const sql = `SELECT * FROM contactos WHERE nameuser = '${nameuser}'`;
     conec.query(sql,(error,results)=>{
         if(error){
             throw  error;
@@ -49,7 +49,7 @@ const search = async(req,res) =>{
     const sql = `SELECT * FROM contactos WHERE  email = '${busqueda}' OR name  = '${busqueda}' OR lastname = '${busqueda}'OR cargo = 
     '${busqueda}' OR area = '${busqueda}' OR proyecto = '${busqueda}' `;
  
-    await conec.query(sql, (error,rows,fields) => {
+     conec.query(sql, (error,rows,fields) => {
   
         if(error){
             throw error;
@@ -65,9 +65,9 @@ const search = async(req,res) =>{
 const insertContac = async(req,res)=>{
     const {name,lastname,email,nameuser,cargo,area,number,proyecto,img} = req.body;
     const imgHosting = await hostImg(img);
-    const sql = `INSERT INTO (name,lastname,email,nameuser,cargo,area,number,proyecto,img) VALUES ('${name}','${lastname}','${email}',
+    const sql = `INSERT INTO contactos(name,lastname,email,nameuser,cargo,area,number,proyecto,img) VALUES ('${name}','${lastname}','${email}',
     '${nameuser}','${cargo}','${area}','${number}','${proyecto}','${imgHosting}') `;
-    await conec.query(sql, (error,rows,fields) => {
+     conec.query(sql, (error,rows,fields) => {
   
         if(error){
             throw error;
@@ -76,7 +76,7 @@ const insertContac = async(req,res)=>{
            res.json('contacto agregado');
            
        }
-    })
+    }) 
     
 }
 
@@ -85,9 +85,9 @@ const updateContact = async(req,res)=>{
     const {name,lastname,email,nameuser,cargo,area,number,proyecto,img} = req.body;
     
     const imgHosting =  await hostImg(img);
-    let sql = `update contact set name = '${name}',lastname = '${lastname}',nameuser = '${nameuser}',email = '${email}',cargo = '${area}',img = '${imgHosting}',
+    let sql = `update contactos set name = '${name}',lastname = '${lastname}',nameuser = '${nameuser}',email = '${email}',cargo = '${area}',img = '${imgHosting}',
      cargo = '${cargo}', number = ${number},proyecto = '${proyecto}' where id = '${id}'`;
-    await conec.query(sql,(error,results)=>{
+     conec.query(sql,(error,results)=>{
         if(error){
             throw error
         }else{
@@ -103,7 +103,7 @@ const updateContact = async(req,res)=>{
 const deleteContact = async=(req,res)=>{
     const {id} = req.params;
     const sql = `Delete from contact where id = '${id}'`
-    await conec.query(sql,(error,results)=>{
+     conec.query(sql,(error,results)=>{
         if(error){
             throw error
         }else{
@@ -119,5 +119,8 @@ module.exports = {
 getContacts,
 getBydid,
 getBynameUser,
-search
+search,
+insertContac,
+updateContact,
+deleteContact
 }

@@ -32,7 +32,7 @@ class Server{
     routes(){
         this.app.use(this.loginPath,require('../routes/login'));
         this.app.use(this.usersPath,require('../routes/users'));
-        this.app.use(this.usersPath,require('../routes/contactos'));
+        this.app.use(this.contactosPath,require('../routes/contactos'));
     }
 
     listen(){
