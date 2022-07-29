@@ -18,11 +18,11 @@ const router = Router();
 
 router.get('/',getContacts);
 
-router.get('/id/:id',getBydid);
+router.get('/id',getBydid);
 
 router.get('/:nameuser',getBynameUser);
 
-router.post('/search',search);
+router.post('/search',search); 
 
 router.post('/insert',
 check('email','debes proporcionar un correo válido').isEmail(),
@@ -33,7 +33,7 @@ existeUser,
 existeEmail,
 insertContac);
 
-router.put('/update',
+router.put('/update/:id',
 check('email','debes proporcionar un correo válido').isEmail(),
 check('number','debes proporcionar  numero de celular válido ').isLength({max:10}),
 updateContact);
