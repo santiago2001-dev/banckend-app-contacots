@@ -13,7 +13,7 @@ const existeEmail = async(req,res,next)=>{
         }
         else{
             
-        
+         
             results.forEach(element => {
              validation = element.email
 

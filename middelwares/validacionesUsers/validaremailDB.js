@@ -12,8 +12,8 @@ const existeEmail = async(req,res,next)=>{
             throw error
         }
         else{
-            
-        
+             
+         
             results.forEach(element => {
              validation = element.email
 

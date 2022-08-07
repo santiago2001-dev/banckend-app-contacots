@@ -59,7 +59,7 @@ const search = async(req,res) =>{
 
 const insertUsers = async(req,res)=>{
     const {name,lastname,password,email,role,img} = await req.body;
-    console.log(password);
+
     const imgHosting = await hostImg(img); 
     const hash =  await encript(password)
     const sql = `INSERT INTO users (name,lastname,email,password,role,img) values ('${name}', '${lastname}','${email}','${hash}','${role}','${imgHosting}')`

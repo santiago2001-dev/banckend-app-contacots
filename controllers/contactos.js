@@ -102,7 +102,7 @@ const updateContact = async(req,res)=>{
 
 const deleteContact = async=(req,res)=>{
     const {id} = req.params;
-    const sql = `Delete from contact where id = '${id}'`
+    const sql = `Delete from contactos where id = '${id}'`
      conec.query(sql,(error,results)=>{
         if(error){
             throw error

@@ -18,10 +18,10 @@ const router = Router();
 
 router.get('/',getContacts);
 
-router.get('/id',getBydid);
+router.get('/:id',getBydid);
 
-router.get('/:nameuser',getBynameUser);
-
+router.get('user/:nameuser',getBynameUser);
+ 
 router.post('/search',search); 
 
 router.post('/insert',

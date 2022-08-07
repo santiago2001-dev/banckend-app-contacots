@@ -9,7 +9,7 @@ const nodemailer = require('nodemailer');
     user: process.env.userGoogle, // generated ethereal user
     pass: process.env.passGoogle // generated ethereal password
   },
-});
+}); 
 transporter.verify().then(()=>{
     console.log("ready for send email");
 })

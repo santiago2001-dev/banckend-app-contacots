@@ -36,7 +36,7 @@ check('password','la contraseña debe tener minimo 8 caracteres').isLength({min:
 validarCmapos,
 updateuser);
 
-
+ 
 router.delete('/delete/:id',deleteUser);
 
-module.exports = router;  
+module.exports = router;   

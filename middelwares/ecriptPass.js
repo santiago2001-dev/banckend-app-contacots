@@ -9,6 +9,6 @@ let hash =  bcrypt.hashSync(password,salt);
 
 return hash
 }
-
+  
 
 module.exports = {encript}

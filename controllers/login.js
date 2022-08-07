@@ -10,6 +10,7 @@ const { sendEmail } = require('../middelwares/email/sendEmail');
 //autentication
 const auth = async(req,res)=>{ 
         const {email,password} = await req.body;
+
         
         let pas;  
 
@@ -17,7 +18,7 @@ const auth = async(req,res)=>{
          
         if(email  == undefined){
             res.json({ error :  'email or password not found'})
-        }  
+        }   
         else{    
 
             conec.query(sql,(error,results)=>{
@@ -33,7 +34,7 @@ const auth = async(req,res)=>{
                     
                      if(!compare){
                          res.json({error : 'user not exist'});
-                     }
+                     } 
                      else{
                         if(results.length >0){
                             let data = JSON.stringify(results[0]);
