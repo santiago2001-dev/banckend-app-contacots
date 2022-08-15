@@ -1,5 +1,6 @@
 const conec = require('../db/config');
 const {hostImg} = require ('../middelwares/hostingImg');
+const  vCard  = require ('vcards-js'); 
 
 const getContacts = async(req,res)=>{
     const sql = `SELECT * FROM contactos`;
@@ -114,6 +115,30 @@ const deleteContact = async=(req,res)=>{
     })
 }
 
+const generateVcard = async =(req,res)=>{
+    const {id} = req.params;
+    const sql =  `SELECT * FROM contactos where id = '${id}'`
+    conec.query(sql,(error,results)=>{
+        if(error){
+            throw error
+        }else{
+            vCard.firstName = results.name;
+            vCard.lastName = results.lastname;
+            vCard.organization = 'ITA';
+            vCard.photo.attachFromUrl(results.img);
+            vCard.workPhone = results.number;
+            vCard.title = results.cargo;
+            console.log(vCard.getFormattedString());
+            res.json({
+                status: 'vcard sucesfil'
+            })
+        }
+
+
+
+    })
+}
+
 
 module.exports = {
 getContacts,
@@ -122,5 +147,6 @@ getBynameUser,
 search,
 insertContac,
 updateContact,
-deleteContact
+deleteContact,
+generateVcard
 }

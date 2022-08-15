@@ -89,13 +89,25 @@ const RestorePassword = async(req,res)=>{
 
     
    
-
+    const getBynameUser = async(req,res)=>{
+        const {nameuser} = req.params;
+        const sql = `SELECT * FROM contactos WHERE nameuser = '${nameuser}'`;
+        conec.query(sql,(error,results)=>{
+            if(error){
+                throw  error;
+            }else{
+                res.json(results)
+    
+            }
+        })
+        
+    }
 
 
 module.exports = {
   
     auth,
     test,
-    RestorePassword
+    RestorePassword,getBynameUser
     
 }

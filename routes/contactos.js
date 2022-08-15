@@ -12,7 +12,8 @@ getBynameUser,
 search,
 insertContac,
 updateContact,
-deleteContact
+deleteContact,
+generateVcard
 } = require ('../controllers/contactos')
 const router = Router();
 
@@ -20,7 +21,7 @@ router.get('/',getContacts);
 
 router.get('/:id',getBydid);
 
-router.get('user/:nameuser',getBynameUser);
+
  
 router.post('/search',search); 
 
@@ -40,6 +41,6 @@ updateContact);
 
 
 router.delete('/delete/:id',deleteContact);
-
+router.get('vcards/:id',generateVcard);
 
 module.exports = router;

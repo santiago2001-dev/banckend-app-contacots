@@ -9,6 +9,7 @@ class Server{
         this.loginPath = '/api/login';
         this.usersPath = '/api/users'; 
         this.contactosPath = '/api/contactos';
+      
         //ruta de nuesta apirest
         
 
