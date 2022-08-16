@@ -146,19 +146,10 @@ const generateVcard = async =(req,res)=>{
                 micard.saveToFile(`./vcards/${results[0].name}-${results[0].lastname}.vcf`);
        //convertir a base 64
             const file = fs.readFileSync(`./vcards/${results[0].name}-${results[0].lastname}.vcf`,{encoding : 'base64'});
-            const sqlins = `INSERT INTO vcard (nameuser,vcard) VALUES ('${results[0].nameuser}','${file}')`; 
-            conec.query(sqlins,(error,response)=>{
-                if(error){
-                    throw error
-                }else{
-
-                    res.json({
-                        status: 'vcard cargado en db' 
-                    }) 
-                }
-
-         })
-    
+            res.json({
+                vcard : file
+            }) 
+          
         })
         }
 
