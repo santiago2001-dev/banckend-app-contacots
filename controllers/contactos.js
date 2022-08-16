@@ -1,6 +1,9 @@
 const conec = require('../db/config');
 const {hostImg} = require ('../middelwares/hostingImg');
 const  vCard  = require ('vcards-js'); 
+const fs = require('fs'), path = require('path')
+const { response } = require('express');
+
 
 const getContacts = async(req,res)=>{
     const sql = `SELECT * FROM contactos`;
@@ -17,13 +20,19 @@ const getContacts = async(req,res)=>{
 
 
 const getBydid = async(req,res)=>{
+ 
     const {id} = req.params;
     const sql = `SELECT * FROM contactos WHERE id = ${id}`;
     conec.query(sql,(error,results)=>{
         if(error){
             throw  error;
         }else{
+         
+          
+            
             res.json(results)
+          
+
 
         }
     })
@@ -117,28 +126,60 @@ const deleteContact = async=(req,res)=>{
 
 const generateVcard = async =(req,res)=>{
     const {id} = req.params;
-    const sql =  `SELECT * FROM contactos where id = '${id}'`
+    const axios = require('axios').default;
+    const sql = `SELECT * FROM contactos WHERE id = ${id}`;
     conec.query(sql,(error,results)=>{
         if(error){
-            throw error
+        throw error
         }else{
-            vCard.firstName = results.name;
-            vCard.lastName = results.lastname;
-            vCard.organization = 'ITA';
-            vCard.photo.attachFromUrl(results.img);
-            vCard.workPhone = results.number;
-            vCard.title = results.cargo;
-            console.log(vCard.getFormattedString());
-            res.json({
-                status: 'vcard sucesfil'
-            })
+            const micard = vCard()
+            //convertir a base 64 la imagen para enviarla a el vcard
+            axios.get(results[0].img,{responseType : 'arraybuffer'}).then(response =>{
+                   const imgbae64 = Buffer.from(response.data,'binary').toString('base64')
+            
+                micard.firstName = results[0].name;
+                micard.lastName = results[0].lastname;
+                micard.organization = 'ITA';
+                micard.photo.embedFromString(imgbae64,'image/jpeg');
+                micard.workPhone = results[0].number;
+                micard.title = results[0].cargo;
+                micard.saveToFile(`./vcards/${results[0].name}-${results[0].lastname}.vcf`);
+       //convertir a base 64
+            const file = fs.readFileSync(`./vcards/${results[0].name}-${results[0].lastname}.vcf`,{encoding : 'base64'});
+            const sqlins = `INSERT INTO vcard (nameuser,vcard) VALUES ('${results[0].nameuser}','${file}')`; 
+            conec.query(sqlins,(error,response)=>{
+                if(error){
+                    throw error
+                }else{
+
+                    res.json({
+                        status: 'vcard cargado en db' 
+                    }) 
+                }
+
+         })
+    
+        })
         }
 
 
 
-    })
-}
+     })
+ } 
 
+ getvcard = async (req,res)=>{
+    const  {nameuser}  =  req.params;
+    sql = `SELECT vcard FROM vcard WHERE nameuser = '${nameuser}'`
+    conec.query(sql,(error,rows)=>{
+        if(error){
+            throw error 
+        }else{
+
+         res.json(rows)
+        }
+    })
+
+ }
 
 module.exports = {
 getContacts,
@@ -148,5 +189,6 @@ search,
 insertContac,
 updateContact,
 deleteContact,
-generateVcard
+generateVcard,
+getvcard
 }
