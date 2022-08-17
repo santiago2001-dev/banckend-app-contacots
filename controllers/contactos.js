@@ -143,6 +143,7 @@ const generateVcard = async =(req,res)=>{
                 micard.photo.embedFromString(imgbae64,'image/jpeg');
                 micard.workPhone = results[0].number;
                 micard.title = results[0].cargo;
+                micard.workEmail=  results[0].email;
                 micard.saveToFile(`./vcards/${results[0].name}-${results[0].lastname}.vcf`);
        //convertir a base 64
             const file = fs.readFileSync(`./vcards/${results[0].name}-${results[0].lastname}.vcf`,{encoding : 'base64'});
