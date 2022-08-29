@@ -17,7 +17,7 @@ generateVcard,
 getvcard
 } = require ('../controllers/contactos')
 const router = Router();
-
+router.get('/by/:nameuser',getBynameUser);
 router.get('/',getContacts);
 
 router.get('/:id',getBydid);
@@ -43,6 +43,6 @@ updateContact);
 
 router.delete('/delete/:id',deleteContact);
 router.get('/vcards/:id',generateVcard);
-router.get('/getvcards/:nameuser',getvcard);
+
 
 module.exports = router; 

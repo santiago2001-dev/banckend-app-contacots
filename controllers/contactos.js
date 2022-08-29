@@ -159,19 +159,19 @@ const generateVcard = async =(req,res)=>{
      })
  } 
 
- getvcard = async (req,res)=>{
-    const  {nameuser}  =  req.params;
-    sql = `SELECT vcard FROM vcard WHERE nameuser = '${nameuser}'`
-    conec.query(sql,(error,rows)=>{
-        if(error){
-            throw error 
-        }else{
+//  getvcard = async (req,res)=>{
+//     const  {nameuser}  =  req.params;
+//     sql = `SELECT vcard FROM vcard WHERE nameuser = '${nameuser}'`
+//     conec.query(sql,(error,rows)=>{
+//         if(error){
+//             throw error 
+//         }else{
 
-         res.json(rows)
-        }
-    })
+//          res.json(rows)
+//         }
+//     })
 
- }
+//  }
 
 module.exports = {
 getContacts,
@@ -182,5 +182,5 @@ insertContac,
 updateContact,
 deleteContact,
 generateVcard,
-getvcard
+
 }
