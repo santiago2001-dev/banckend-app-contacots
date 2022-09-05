@@ -10,7 +10,7 @@ class Server{
         this.usersPath = '/api/users'; 
         this.contactosPath = '/api/contactos';
         this.enlacespath  = '/api/enlaces'
-      
+        this.soprte = '/api/soporte'
         //ruta de nuesta apirest
         
 
@@ -36,6 +36,7 @@ class Server{
         this.app.use(this.usersPath,require('../routes/users'));
         this.app.use(this.contactosPath,require('../routes/contactos'));
         this.app.use(this.enlacespath,require('../routes/enlaces'))
+        this.app.use(this.soprte,require('../routes/soporte'));
     }
 
     listen(){

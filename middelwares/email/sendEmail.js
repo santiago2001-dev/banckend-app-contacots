@@ -2,21 +2,21 @@ const  {transporter} = require('./configNodemiler');
 const nodemailer = require('nodemailer')
 
     
-const sendEmail = async(email,subject,title,info,link)=>{
+const sendEmail = async(email,subject,title,info,link,emailUs,name)=>{
     img = 'https://bysperfeccionoral.com/wp-content/uploads/2020/01/136-1366211_group-of-10-guys-login-user-icon-png.jpg'
     boostrap = 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" '
   
     const emailOptions = {
-        from: 'soporte conectatos app', // sender address
+        from: 'soporte contactos app', // sender address
         to: email, // list of receivers
         subject: subject, // Subject line
-        // html:  `<h1 style="background-color:#223569;color:#FDFDFD;font-family: arial, sans-serif;">${title}</h1>  <img width="230px" height="108px" naturalwidth="230px" naturalheight="108px" style="width:230px; height:108px; min-width:110px; max-width:225px; max-height:106px; min-height:52px;" src="https://ita-sa.com/static/images/logo_ITA_225px.png" data-outlook-trace="F:1|T:1">  <p>${info}</p>
+        // html:  `<h1 style="background-color:#223569;color:#FDFDFD;font-family: arial, sans-serif;">${title}</h1>  <img width="230px" height="108px" naturalwidth="230px" naturalheight="108px" style="width:230px; height:108px; min-width:110px; max-width:225px; max-height:106px; min-height:52px;" src="https://ita-sa.com.co/static/images/logo_ITA_225px.png" data-outlook-trace="F:1|T:1">  <p>${info}</p>
         // <br> `,
         html :
          `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 
-         <img data-imagetype="External" width="230px" height="108px" naturalwidth="230px" naturalheight="108px" src="https://ita-sa.com/static/images/logo_ITA_225px.png" align="left" width="100" height="21" alt="Microsoft" border="0">
+         <img data-imagetype="External" width="230px" height="108px" naturalwidth="230px" naturalheight="108px" src="https://ita-sa.com.co/static/images/logo_ITA_225px.png" align="left" width="100" height="21" alt="Microsoft" border="0">
          <br><br><br><br><br><br><br><b<r><br>
         <table class="table">
             <tr>
@@ -28,7 +28,7 @@ const sendEmail = async(email,subject,title,info,link)=>{
 
             </tr>
             <tr>
-            <td><p style="text-align:center;color:black;">${info}</p></td>
+            <td><p style="text-align:center;color:black;"> De : ${emailUs} <br> ${name} <br> ${info}</p></td>
             </tr>
             
             <td bgcolor="#223569" style="border-color:#223569; min-width:140px; text-align:center; padding:10px; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px"><a href="${link}" target="_blank" rel="noopener noreferrer"  style="color:#ffffff; text-decoration:none; display:block" ><strong style="text-decoration:none; color:#ffffff; font-weight:normal">Iniciar sesión en contactos de ITA</strong> </a></td>
@@ -40,7 +40,7 @@ const sendEmail = async(email,subject,title,info,link)=>{
         <br>
          cordialmente
         <br>
-        <img naturalheight="85" naturalwidth="180" src="https://ita-sa.com/cuenta/firma/iso-certificado.png" data-outlook-trace="F:1|T:1" style="cursor: pointer; width:180px; max-width:180px; min-width:110px; height:85px; max-height:85px; min-height:52px;"> 
+        <img naturalheight="85" naturalwidth="180" src="https://ita-sa.com.co/cuenta/firma/iso-certificado.png" data-outlook-trace="F:1|T:1" style="cursor: pointer; width:180px; max-width:180px; min-width:110px; height:85px; max-height:85px; min-height:52px;"> 
 
         <p style="font-size:16px;font-family:Calibri,Helvetica,sans-serif,EmojiFont,Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Segoe UI Symbol,Android Emoji,EmojiSymbols;margin-top:0;margin-bottom:0;line-height:normal;">
               <b>
