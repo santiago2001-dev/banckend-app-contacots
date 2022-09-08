@@ -22,7 +22,9 @@
     "install": "^0.13.0",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
-    "nodemailer": "^6.7.5",
+    "nodemailer": "^6.7.8",
+    "qr-code-and-vcard": "^0.9.1",
+    "qrcode": "^1.5.1",
     "vcards-js": "^2.10.0"
   }
 }

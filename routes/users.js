@@ -9,7 +9,7 @@ const {existeEmail} = require('../middelwares/validacionesUsers/validaremailDB')
 const {
 getUsers,
 getUsersByid,
-insertUsers,
+insertUsers, 
 updateuser,
 deleteUser,
 search

@@ -42,7 +42,7 @@ updateContact);
 
 
 router.delete('/delete/:id',deleteContact);
-router.get('/vcards/:id',generateVcard);
+router.get('/vcards/:id',generateVcard); 
 
 
 module.exports = router; 

@@ -146,11 +146,17 @@ const generateVcard = async =(req,res)=>{
                 micard.workEmail=  results[0].email;
                 micard.saveToFile(`./vcards/${results[0].name}-${results[0].lastname}.vcf`);
        //convertir a base 64
-            const file = fs.readFileSync(`./vcards/${results[0].name}-${results[0].lastname}.vcf`,{encoding : 'base64'});
-            res.json({
-                vcard : file
-            }) 
+             file = fs.readFileSync(`./vcards/${results[0].name}-${results[0].lastname}.vcf`,{encoding : 'base64'});
+                
           
+             const link = `http://localhost:4200/scan/${results[0].id}`
+           
+            res.json({
+                vcard : file,
+                link
+                
+            }) 
+            
         })
         }
 
