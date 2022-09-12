@@ -5,7 +5,7 @@ const ticket = async(req,res)=>{
 
   
     const link = 'https://ita-sa.com/'
-    sendEmail('vmorales@ita-sa.com','informacion ticked de soporte contactos ITA','Soporte ticked app contactos',info,link,emailUs,name)
+    sendEmail('vmorales@ita-sa.com','informacion ticket de soporte contactos ITA','Soporte ticked app contactos',info,link,emailUs,name)
     res.json('ticked enviado')
 }
 
